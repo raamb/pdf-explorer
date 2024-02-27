@@ -1,6 +1,6 @@
 # pdf-explorer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [react-pdf](https://github.com/wojtekmaj/react-pdf/)
 
 ## Available Scripts
 
