@@ -1,27 +1,41 @@
 {
   "name": "pdf-reader",
   "version": "0.1.0",
+  "description": "PDF Reader",
   "private": true,
+  "main": "src/index.tsx",
+  "type": "module",
+  "scripts": {
+    "build": "yarn copy && react-scripts build",
+    "copy": "yarn copy-cmaps && yarn copy-standard-fonts && yarn copy-worker",
+    "copy-cmaps": "node --loader ts-node/esm ./scripts/copy-cmaps.ts",
+    "copy-standard-fonts": "node --loader ts-node/esm ./scripts/copy-standard-fonts.ts",
+    "copy-worker": "node --loader ts-node/esm ./scripts/copy-worker.ts",
+    "dev": "yarn copy && react-scripts start",
+    "eject": "react-scripts eject",
+    "test": "react-scripts test"
+  },
+  "author": {
+    "name": "Raam",
+    "email": "raam@raam.com"
+  },
+  "license": "MIT",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@types/react-dom": "^18.2.19",
+    "@wojtekmaj/react-hooks": "^1.18.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-pdf": "latest",
+    "react-scripts": "^5.0.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@types/node": "*",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "resolutions": {
+    "eslint-plugin-import@^2.25.3": "npm:eslint-plugin-i@^2.28.0",
+    "mini-css-extract-plugin": "~2.4.0"
   },
   "browserslist": {
     "production": [
