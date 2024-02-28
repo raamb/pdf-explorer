@@ -1,0 +1,1 @@
+export const ReaderPage = () => <div>Reader</div>;

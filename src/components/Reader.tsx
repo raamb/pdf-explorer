@@ -4,7 +4,7 @@ import { pdfjs, Document, Page } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 
-import './Reader.css';
+import '../styles/Reader.css';
 
 import type { PDFDocumentProxy } from 'pdfjs-dist';
 
@@ -27,7 +27,7 @@ const maxWidth = 800;
 
 type PDFFile = string | File | null;
 
-export default function Reader() {
+export const Reader = () => {
   const [file, setFile] = useState<PDFFile>('');
   const [numPages, setNumPages] = useState<number>();
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
@@ -58,14 +58,12 @@ export default function Reader() {
 
   return (
     <div className="Example">
-      <header>
-        <h1>react-pdf sample page</h1>
-      </header>
       <div className="Example__container">
-        <div className="Example__container__load">
-          <label htmlFor="file">Load from file:</label>{' '}
-          <input onChange={onFileChange} type="file" />
-        </div>
+         {/* <div className="Example__container__load">
+            <label htmlFor="file">Load from file:</label>{' '}
+            <input onChange={onFileChange} type="file" />
+         </div>
+        */}
         <div className="Example__container__document" ref={setContainerRef}>
           <Document file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
             {Array.from(new Array(numPages), (el, index) => (

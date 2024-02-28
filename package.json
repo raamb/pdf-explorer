@@ -6,14 +6,27 @@
   "main": "src/index.tsx",
   "type": "module",
   "scripts": {
+    "start": "react-scripts start",
     "build": "yarn copy && react-scripts build",
+    "only-build": "react-scripts build",
     "copy": "yarn copy-cmaps && yarn copy-standard-fonts && yarn copy-worker",
     "copy-cmaps": "node --loader ts-node/esm ./scripts/copy-cmaps.ts",
     "copy-standard-fonts": "node --loader ts-node/esm ./scripts/copy-standard-fonts.ts",
     "copy-worker": "node --loader ts-node/esm ./scripts/copy-worker.ts",
     "dev": "yarn copy && react-scripts start",
     "eject": "react-scripts eject",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix --ext .js,.jsx src",
+    "format": "prettier --write ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc",
+    "husky-install": "husky install",
+    "prepare": "husky install"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "author": {
     "name": "Raam",
@@ -21,7 +34,12 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "latest",
+    "@mui/material": "latest",
     "@types/react-dom": "^18.2.19",
+    "@types/react-router-dom": "latest",
     "@wojtekmaj/react-hooks": "^1.18.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -32,7 +50,15 @@
   "devDependencies": {
     "@types/node": "*",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
+    "husky": "^8.0.0",
+    "jest": "^29.1.2",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1"
   },
   "resolutions": {
     "eslint-plugin-import@^2.25.3": "npm:eslint-plugin-i@^2.28.0",
