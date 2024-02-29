@@ -1,24 +1,21 @@
-import { Link } from 'react-router-dom';
 import { ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 import { type IMenuItem } from '../types';
-
-type Props = IMenuItem & {
-  selected?: boolean;
-  onClick?: () => void;
+type Props = {
+  item: IMenuItem;
 };
 
-export const MenuItem: React.FC<Props> = ({
-route,
-  literal,
-  Icon,
-  selected,
-  onClick,
-}) => {
+export const MenuItem: React.FC<Props> = ({item}) => {
+// export const MenuItem = (item : IMenuItem) => {
+
+  async function onClick() {
+    console.log("CLICK " + item.file_link)
+  }
+
   const link = (
     <ListItem
       button
-      selected={selected}
       sx={{
         '&.Mui-selected': {
           backgroundColor: 'primary.dark',
@@ -39,13 +36,11 @@ route,
           }),
         ]}
       >
-        <Icon sx={{ color: 'secondary.dark' }} />
+        <PictureAsPdfIcon sx={{ color: 'secondary.dark' }} />
       </ListItemIcon>
-      <ListItemText primary={literal} />
+      <ListItemText primary={item.name} />
     </ListItem>
   );
 
-  return route
-    ? <Link to={route}>{link}</Link>
-    : link;
+  return link;
 };

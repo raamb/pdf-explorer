@@ -1,11 +1,11 @@
 import { type ReactNode } from "react";
-import { Toolbar, Box, styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 
 import { HeaderBar } from "./HeaderBar";
 import { Drawer } from "./Drawer";
-// import { Footer } from "./Footer";
 import { Main } from "./Main";
-import { Reader } from './Reader';
+// import { Reader } from './Reader';
+// import { Footer } from "./Footer";
 
 import { DrawerContextProvider } from "../contexts/drawer-context";
 

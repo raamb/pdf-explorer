@@ -41,6 +41,7 @@
     "@types/react-dom": "^18.2.19",
     "@types/react-router-dom": "latest",
     "@wojtekmaj/react-hooks": "^1.18.0",
+    "axios": "^1.6.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-pdf": "latest",
@@ -49,16 +50,16 @@
   },
   "devDependencies": {
     "@types/node": "*",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.0.0",
-    "eslint": "^8.24.0",
+    "eslint": "^8.57.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.8",
-    "husky": "^8.0.0",
+    "husky": "^8.0.3",
     "jest": "^29.1.2",
     "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1"
+    "prettier": "^2.8.8",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0"
   },
   "resolutions": {
     "eslint-plugin-import@^2.25.3": "npm:eslint-plugin-i@^2.28.0",
