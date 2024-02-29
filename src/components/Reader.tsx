@@ -1,11 +1,10 @@
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import 'react-pdf/dist/esm/Page/TextLayer.css';
+import '../styles/Reader.css';
 import { useCallback, useState } from 'react';
 import { useResizeObserver } from '@wojtekmaj/react-hooks';
 import { pdfjs, Document, Page } from 'react-pdf';
-import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
-import 'react-pdf/dist/esm/Page/TextLayer.css';
-
-import '../styles/Reader.css';
-
+import { useFileReaderContext } from '../contexts/file-reader-context';
 import type { PDFDocumentProxy } from 'pdfjs-dist';
 
  pdfjs.GlobalWorkerOptions.workerSrc = 
@@ -25,10 +24,8 @@ const resizeObserverOptions = {};
 
 const maxWidth = 800;
 
-type PDFFile = string | File | null;
-
-export const Reader = (file_link: string) => {
-  const [file, setFile] = useState<PDFFile>(file_link);
+export const Reader = () => {
+  const { fileLink, setFileLink } = useFileReaderContext();
   const [numPages, setNumPages] = useState<number>();
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
   const [containerWidth, setContainerWidth] = useState<number>();
@@ -43,13 +40,6 @@ export const Reader = (file_link: string) => {
 
   useResizeObserver(containerRef, resizeObserverOptions, onResize);
 
-  function onFileChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    const { files } = event.target;
-
-    if (files && files[0]) {
-      setFile(files[0] || null);
-    }
-  }
 
   function onDocumentLoadSuccess({ numPages: nextNumPages }: PDFDocumentProxy): void {
     console.log(new URL('pdfjs-dist/build/pdf.worker.min.js',import.meta.url).toString())
@@ -65,7 +55,7 @@ export const Reader = (file_link: string) => {
          </div>
         */}
         <div className="Example__container__document" ref={setContainerRef}>
-          <Document file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
+          <Document file={fileLink} onLoadSuccess={onDocumentLoadSuccess} options={options}>
             {Array.from(new Array(numPages), (el, index) => (
               <Page
                 key={`page_${index + 1}`}

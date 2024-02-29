@@ -4,10 +4,11 @@ import { Box, styled } from "@mui/material";
 import { HeaderBar } from "./HeaderBar";
 import { Drawer } from "./Drawer";
 import { Main } from "./Main";
-// import { Reader } from './Reader';
+import { Reader } from './Reader';
 // import { Footer } from "./Footer";
 
 import { DrawerContextProvider } from "../contexts/drawer-context";
+import { FileReaderContextProvider } from "../contexts/file-reader-context";
 
 const OuterContainer = styled(Box)`
   display: flex;
@@ -29,14 +30,15 @@ interface ILayoutProps {
 }
 
 export const Layout = ({ children }: ILayoutProps) => (
+  <FileReaderContextProvider>
   <DrawerContextProvider>
     <OuterContainer>
       <HeaderBar />
-      <InnerContainer>
         <Drawer />
         <Main>{children}</Main>
-      </InnerContainer>
+      <Reader />
       {/* <Footer>Footer</Footer> */}
     </OuterContainer>
   </DrawerContextProvider>
+  </FileReaderContextProvider>
 );

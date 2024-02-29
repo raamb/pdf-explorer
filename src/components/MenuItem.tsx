@@ -1,18 +1,15 @@
 import { ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
-
 import { type IMenuItem } from '../types';
+import { useFileReaderContext } from "../contexts/file-reader-context";
+
 type Props = {
   item: IMenuItem;
 };
 
 export const MenuItem: React.FC<Props> = ({item}) => {
-// export const MenuItem = (item : IMenuItem) => {
-
-  async function onClick() {
-    console.log("CLICK " + item.file_link)
-  }
-
+  const { fileLink, setFileLink } = useFileReaderContext();
+  
   const link = (
     <ListItem
       button
@@ -26,7 +23,7 @@ export const MenuItem: React.FC<Props> = ({item}) => {
           color: 'common.white',
         },
       }}
-      onClick={onClick}
+      onClick={() => setFileLink(item.file_link)}
     >
       <ListItemIcon
         sx={[
